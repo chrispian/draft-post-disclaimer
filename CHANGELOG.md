@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.2] - 2020-02-16
+### Fixed
+- Fixed reference to old class name causing fatal error. 
+
 ## [1.0.1] - 2020-02-16
 ### Updated
 - Updated filenames to match class names

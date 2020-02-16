@@ -48,7 +48,7 @@ function run_draft_post_disclaimer() {
 	$options = new Options;
 	$options->run();
 
-	$plugin = new Draft_Post_Disclaimer();
+	$plugin = new Disclaimer();
 	$plugin->run();
 
 }
