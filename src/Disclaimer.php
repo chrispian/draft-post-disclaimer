@@ -12,7 +12,7 @@
 
 Namespace CHB\DraftPostDisclaimer;
 
-class Draft_Post_Disclaimer {
+class Disclaimer {
 
 	/**
 	 * @author Chrispian H. Burks <chrispian@gmail.com>
@@ -48,7 +48,6 @@ class Draft_Post_Disclaimer {
 		}
 	return $query;
 	}
-
 
 	/**
 	 * @author Chrispian H. Burks <chrispian@gmail.com>

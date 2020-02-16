@@ -1,4 +1,4 @@
-# Draft Post Dislaimer
+# Draft Post Disclaimer
 
 ## About
 This plugin is based on work by [Sal Ferrarello](https://salferrarello.com/draft-blog-posts/). The idea being to publish draft posts in a new category and add a disclaimer. This reduces the barrier to getting posts published but lets people know that the post is a work in progress.
