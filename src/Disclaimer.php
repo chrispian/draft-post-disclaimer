@@ -21,9 +21,9 @@ class Disclaimer {
 	 */
 	public function run() {
 		// Do the things.
-		add_filter( 'pre_get_posts', ['CHB\DraftPostDisclaimer\Draft_Post_Disclaimer', 'exclude_draft_category'] );
-		add_filter('the_content', [ 'CHB\DraftPostDisclaimer\Draft_Post_Disclaimer', 'draft_notice' ]);
-		add_action('wp_enqueue_scripts', [ 'CHB\DraftPostDisclaimer\Draft_Post_Disclaimer', 'add_styles' ]);
+		add_filter( 'pre_get_posts', ['CHB\DraftPostDisclaimer\Disclaimer', 'exclude_draft_category'] );
+		add_filter('the_content', [ 'CHB\DraftPostDisclaimer\Disclaimer', 'draft_notice' ]);
+		add_action('wp_enqueue_scripts', [ 'CHB\DraftPostDisclaimer\Disclaimer', 'add_styles' ]);
 	}
 
 	/**
