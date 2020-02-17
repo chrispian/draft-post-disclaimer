@@ -22,8 +22,9 @@ class Disclaimer {
 	public function run() {
 		// Do the things.
 		add_filter( 'pre_get_posts', ['CHB\DraftPostDisclaimer\Disclaimer', 'exclude_draft_category'] );
-		add_filter('the_content', [ 'CHB\DraftPostDisclaimer\Disclaimer', 'draft_notice' ]);
-		add_action('wp_enqueue_scripts', [ 'CHB\DraftPostDisclaimer\Disclaimer', 'add_styles' ]);
+		add_filter( 'the_content', [ 'CHB\DraftPostDisclaimer\Disclaimer', 'draft_notice' ] );
+		add_filter( 'the_excerpt', [ 'CHB\DraftPostDisclaimer\Disclaimer', 'draft_notice_excerpt' ] );
+		add_action( 'wp_enqueue_scripts', [ 'CHB\DraftPostDisclaimer\Disclaimer', 'add_styles' ] );
 	}
 
 	/**
@@ -36,7 +37,13 @@ class Disclaimer {
 	 */
 	public function exclude_draft_category( $query ) {
 		$category = strtolower(esc_html(get_option('dpd_category')));
-		if ( $query->is_home ) {
+		$exclude_from_queries = get_option('dpd_exclude_from_queries');
+
+		if ( ! $exclude_from_queries['exclude_from_queries_html'] ) {
+			return $query;
+		}
+
+		if ( $query->is_home || $query->is_archive ) {
 			$query->set( 'tax_query', [
 				[
 					'taxonomy' => 'category',
@@ -57,13 +64,13 @@ class Disclaimer {
 	 *
 	 * @return string
 	 */
-	function draft_notice( $content ) {
-		$disclaimer = wp_kses_post(get_option('dpd_disclaimer'));
-		global $post;
-		if ( ! in_category( 'draft', $post ) || !$disclaimer ) {
-			// Make no changes.
+	public function draft_notice( $content ) {
+
+		if ( ! Disclaimer::maybe_display_notice() ) {
 			return $content;
 		}
+
+		$disclaimer = wp_kses_post(get_option('dpd_disclaimer'));
 
 		$html = "
 		<div class=\"alert alert-warning\" role=\"alert\"> 
@@ -71,7 +78,35 @@ class Disclaimer {
 		</div>
 		";
 
-		return $content . $html;
+		return "$content " . $html;
+
+	}
+
+	/**
+	 * @author Chrispian H. Burks <chrispian@gmail.com>
+	 * @since  2020-02-16
+	 *
+	 * @param $excerpt
+	 *
+	 * @return string
+	 */
+	public function draft_notice_excerpt( ) {
+
+		$excerpt = get_the_excerpt();
+
+		if ( ! Disclaimer::maybe_display_notice() ) {
+			return $excerpt;
+		}
+
+		$disclaimer = wp_kses_post(get_option('dpd_disclaimer'));
+
+		$html = "
+		<div class=\"alert alert-warning\" role=\"alert\"> 
+			$disclaimer
+		</div>
+		";
+
+		return $excerpt . $html;
 
 	}
 
@@ -84,5 +119,40 @@ class Disclaimer {
 		wp_enqueue_style( 'draft-post-disclaimer', $plugin_url . '../assets/style.css' );
 	}
 
+
+	/**
+	 * @author Chrispian H. Burks <chrispian.burks@webvdevstudios.com>
+	 * @since  2020-02-16
+	 * @return mixed
+	 */
+	public function maybe_display_notice() {
+
+		$status                = true;
+		$disclaimer            = get_option( 'dpd_disclaimer' );
+		$disclaimer_on_queries = get_option( 'dpd_disclaimer_on_queries' );
+		$disclaimer_on_single  = get_option( 'dpd_disclaimer_on_single' );
+
+		global $post;
+
+		if ( ! in_category('draft', $post) ) {
+			$status = false;
+		}
+
+		if ( ! $disclaimer ) {
+			$status = false;
+		}
+
+		if ( ! $disclaimer_on_queries['disclaimer_on_queries_html'] && ! is_single() ) {
+			$status = false;
+		}
+
+		if ( ! $disclaimer_on_single['disclaimer_on_single_html'] ) {
+			$status = false;
+		}
+
+
+		return $status;
+
+	}
 
 }

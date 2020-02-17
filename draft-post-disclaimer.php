@@ -36,7 +36,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Current plugin version.
  */
-define( 'DRAFT_POST_DISCLAIMER_VERSION', '1.0.2' );
+define( 'DRAFT_POST_DISCLAIMER_VERSION', '1.0.3' );
 
 /**
  * Fire things up.

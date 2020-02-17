@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+
+## [1.0.3] - 2020-02-16
+### Added
+- Option for excluding draft posts from the main post query (latest posts, archives, etc.)
+- Option to display the disclaimer in the main post query (latest posts, archives, etc.) 
+- Option to toggle disclaimer display on single pages
+
 ## [1.0.2] - 2020-02-16
 ### Fixed
 - Fixed reference to old class name causing fatal error. 
