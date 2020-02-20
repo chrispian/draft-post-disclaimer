@@ -1,0 +1,31 @@
+{
+  "name": "draft-post-disclaimer",
+  "version": "1.0.0",
+  "description": "## About This plugin is based on work by [Sal Ferrarello](https://salferrarello.com/draft-blog-posts/). The idea being to publish draft posts in a new category and add a disclaimer. This reduces the barrier to getting posts published but lets people know that the post is a work in progress.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aubreypwd/draft-post-disclaimer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aubreypwd/draft-post-disclaimer/issues"
+  },
+  "homepage": "https://github.com/aubreypwd/draft-post-disclaimer#readme",
+  "devDependencies": {
+    "@webdevstudios/css-coding-standards": "~1.0.0",
+    "@webdevstudios/js-coding-standards": "~1.0.1"
+  },
+  "eslintConfig": {
+    "extends": "@webdevstudios/js-coding-standards"
+  },
+  "sasslintConfig": "node_modules/@webdevstudios/css-coding-standards/.sass-lint.yml",
+  "stylelint": {
+    "extends": "stylelint-config-wordpress",
+    "ignoreFiles": "**/*.scss"
+  }
+}
