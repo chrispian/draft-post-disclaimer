@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.4] - 2020-02-16
+### Fixed
+- Fixed bug in calling dpd_disclaimer_on_queries_custom_data instead of dpd_exclude_from_queries_custom_data
+- Fixed minor spacing to make things more consistent. 
+
+### Changed
+- Changed static method calls $this style
 
 ## [1.0.3] - 2020-02-16
 ### Added

@@ -18,8 +18,8 @@ class Options {
 	public function run() {
 
 		// Do the things.
-		add_action( 'admin_init', ['CHB\DraftPostDisclaimer\Options', 'settings_init'] );
-		add_action( 'admin_menu', ['CHB\DraftPostDisclaimer\Options', 'options_page'] );
+		add_action( 'admin_init', [ $this, 'settings_init' ] );
+		add_action( 'admin_menu', [ $this, 'options_page' ] );
 
 	}
 
@@ -39,14 +39,14 @@ class Options {
 		register_setting('dpd', 'dpd_disclaimer_on_single');
 
 		// Add out section.
-		add_settings_section('header', __('Settings', 'dpd'), ['CHB\DraftPostDisclaimer\Options', 'header'], 'dpd');
+		add_settings_section('header', __('Settings', 'dpd'), [ $this, 'header' ], 'dpd');
 
 		// Add the settings filed.
-		add_settings_field('category_html', __('Category', 'dpd'), ['CHB\DraftPostDisclaimer\Options', 'category_html'], 'dpd', 'header', [ 'label_for' => 'category_html', 'class' => 'dpd_row', 'dpd_custom_data' => 'custom', ]);
-		add_settings_field('exclude_from_queries_html', __('Exclude From Queries?', 'dpd'), ['CHB\DraftPostDisclaimer\Options', 'exclude_from_queries_html'], 'dpd', 'header', [ 'label_for' => 'exclude_from_queries_html', 'class' => 'dpd_row', 'dpd_exclude_from_queries_custom_data' => 'custom', ]);
-		add_settings_field('disclaimer_on_queries_html', __('Display Disclaimer on home, archives etc?', 'dpd'), ['CHB\DraftPostDisclaimer\Options', 'disclaimer_on_queries_html'], 'dpd', 'header', [ 'label_for' => 'disclaimer_on_queries_html', 'class' => 'dpd_row', 'dpd_disclaimer_on_queries_custom_data' => 'custom', ]);
-		add_settings_field('disclaimer_on_single_html', __('Display Disclaimer on single post view?', 'dpd'), ['CHB\DraftPostDisclaimer\Options', 'disclaimer_on_single_html'], 'dpd', 'header', [ 'label_for' => 'disclaimer_on_single_html', 'class' => 'dpd_row', 'dpd_disclaimer_on_single_custom_data' => 'custom', ]);
-		add_settings_field('disclaimer_html', __('Disclaimer', 'dpd'), ['CHB\DraftPostDisclaimer\Options', 'disclaimer_html'], 'dpd', 'header', [ 'label_for' => 'category_html', 'class' => 'dpd_row', 'dpd_category_custom_data' => 'custom', ]);
+		add_settings_field('category_html', __('Category', 'dpd'), [ $this, 'category_html' ], 'dpd', 'header', [ 'label_for' => 'category_html', 'class' => 'dpd_row', 'dpd_custom_data' => 'custom', ]);
+		add_settings_field('exclude_from_queries_html', __('Exclude From Queries?', 'dpd'), [ $this, 'exclude_from_queries_html' ], 'dpd', 'header', [ 'label_for' => 'exclude_from_queries_html', 'class' => 'dpd_row', 'dpd_exclude_from_queries_custom_data' => 'custom', ]);
+		add_settings_field('disclaimer_on_queries_html', __('Display Disclaimer on home, archives etc?', 'dpd'), [ $this, 'disclaimer_on_queries_html' ], 'dpd', 'header', [ 'label_for' => 'disclaimer_on_queries_html', 'class' => 'dpd_row', 'dpd_disclaimer_on_queries_custom_data' => 'custom', ]);
+		add_settings_field('disclaimer_on_single_html', __('Display Disclaimer on single post view?', 'dpd'), [ $this, 'disclaimer_on_single_html' ], 'dpd', 'header', [ 'label_for' => 'disclaimer_on_single_html', 'class' => 'dpd_row', 'dpd_disclaimer_on_single_custom_data' => 'custom', ]);
+		add_settings_field('disclaimer_html', __('Disclaimer', 'dpd'), [ $this, 'disclaimer_html' ], 'dpd', 'header', [ 'label_for' => 'category_html', 'class' => 'dpd_row', 'dpd_category_custom_data' => 'custom', ]);
 
 	}
 
@@ -89,7 +89,7 @@ class Options {
 
 		?>
 
-		 <select id="<?php echo esc_attr( $args['label_for'] ); ?>" data-custom="<?php echo esc_attr( $args['dpd_disclaimer_on_queries_custom_data'] ); ?>" name="dpd_exclude_from_queries[<?php echo esc_attr( $args['label_for'] ); ?>]"
+		 <select id="<?php echo esc_attr( $args['label_for'] ); ?>" data-custom="<?php echo esc_attr( $args['dpd_exclude_from_queries_custom_data'] ); ?>" name="dpd_exclude_from_queries[<?php echo esc_attr( $args['label_for'] ); ?>]"
  >
 			<option value="1" <?php echo isset( $exclude_from_queries[ $args['label_for'] ] ) ? ( selected( $exclude_from_queries[ $args['label_for'] ], '1', false ) ) : ( '' ); ?>>
 				<?php esc_html_e( 'Yes', 'dpd' ); ?>
@@ -182,7 +182,7 @@ class Options {
 	 */
 	public function options_page() {
 		// add top level menu page
-		add_menu_page( 'Draft Post Disclaimer', 'Draft Post Disclaimer Options', 'manage_options', 'dpd', ['CHB\DraftPostDisclaimer\Options', 'options_page_html'] );
+		add_menu_page( 'Draft Post Disclaimer', 'Draft Post Disclaimer Options', 'manage_options', 'dpd', [ $this, 'options_page_html' ] );
 	}
 
 	/**

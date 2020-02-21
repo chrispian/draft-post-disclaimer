@@ -21,10 +21,10 @@ class Disclaimer {
 	 */
 	public function run() {
 		// Do the things.
-		add_filter( 'pre_get_posts', ['CHB\DraftPostDisclaimer\Disclaimer', 'exclude_draft_category'] );
-		add_filter( 'the_content', [ 'CHB\DraftPostDisclaimer\Disclaimer', 'draft_notice' ] );
-		add_filter( 'the_excerpt', [ 'CHB\DraftPostDisclaimer\Disclaimer', 'draft_notice_excerpt' ] );
-		add_action( 'wp_enqueue_scripts', [ 'CHB\DraftPostDisclaimer\Disclaimer', 'add_styles' ] );
+		add_filter( 'pre_get_posts', [ $this, 'exclude_draft_category' ] );
+		add_filter( 'the_content', [ $this, 'draft_notice' ] );
+		add_filter( 'the_excerpt', [ $this, 'draft_notice_excerpt' ] );
+		add_action( 'wp_enqueue_scripts', [ $this, 'add_styles' ] );
 	}
 
 	/**
