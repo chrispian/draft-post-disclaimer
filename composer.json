@@ -7,5 +7,8 @@
             "name": "Chrispian"
         }
     ],
+    "autoload": {
+        "psr-4": { "CHB\\DraftPostDisclaimer\\": "src/" }
+    },
     "require": {}
 }

@@ -25,8 +25,10 @@ Namespace CHB\DraftPostDisclaimer;
 /**
  * Load up our dependencies.
  */
-require 'src/Disclaimer.php';
 require 'src/admin/Options.php';
+if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
+	require_once __DIR__ . '/vendor/autoload.php';
+}
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
