@@ -183,7 +183,7 @@ class Options {
 		$disclaimer = get_option('dpd_disclaimer');
 		// output the field
 		?>
-		<textarea name="dpd_disclaimer" cols="80" rows="10"><?php esc_html_e($disclaimer, 'dpd'); ?></textarea><br />q
+		<textarea name="dpd_disclaimer" cols="80" rows="10"><?php esc_html_e($disclaimer, 'dpd'); ?></textarea><br />
 
 		<?php
 	}
