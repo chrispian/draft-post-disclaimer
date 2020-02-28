@@ -25,7 +25,6 @@ Namespace CHB\DraftPostDisclaimer;
 /**
  * Load up our dependencies.
  */
-require 'src/admin/Options.php';
 if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
 	require_once __DIR__ . '/vendor/autoload.php';
 }
@@ -47,7 +46,7 @@ define( 'DRAFT_POST_DISCLAIMER_VERSION', '1.0.3' );
  */
 function run_draft_post_disclaimer() {
 
-	$options = new Options;
+	$options = new Admin\Options;
 	$options->run();
 
 	$plugin = new Disclaimer();
