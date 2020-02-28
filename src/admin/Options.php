@@ -10,6 +10,17 @@ Namespace CHB\DraftPostDisclaimer;
 
 class Options {
 
+
+	/**
+	 * @author Chrispian H. Burks <chrispian@gmail.com>
+	 * @since  2020-02-28
+	 *
+	 */
+	public function __construct( $plugin_action_links_hook ) {
+	    $this->plugin_action_links_hook = $plugin_action_links_hook;
+	}
+
+
 	/**
 	 * @author Chrispian H. Burks <chrispian@gmail.com>
 	 * @since  2020-02-15
@@ -20,6 +31,7 @@ class Options {
 		// Do the things.
 		add_action( 'admin_init', [ $this, 'settings_init' ] );
 		add_action( 'admin_menu', [ $this, 'options_page' ] );
+		add_filter( $this->plugin_action_links_hook, [ $this, 'add_plugin_settings_link' ] );
 
 	}
 
@@ -171,7 +183,7 @@ class Options {
 		$disclaimer = get_option('dpd_disclaimer');
 		// output the field
 		?>
-		<textarea name="dpd_disclaimer" cols="80" rows="10"><?php esc_html_e($disclaimer, 'dpd'); ?></textarea><br />
+		<textarea name="dpd_disclaimer" cols="80" rows="10"><?php esc_html_e($disclaimer, 'dpd'); ?></textarea><br />q
 
 		<?php
 	}
@@ -182,7 +194,8 @@ class Options {
 	 */
 	public function options_page() {
 		// add top level menu page
-		add_menu_page( 'Draft Post Disclaimer', 'Draft Post Disclaimer Options', 'manage_options', 'dpd', [ $this, 'options_page_html' ] );
+		// add_menu_page( 'Draft Post Disclaimer', 'Draft Post Disclaimer Options', 'manage_options', 'dpd', [ $this, 'options_page_html' ] );
+		add_submenu_page( 'options-general.php', 'Draft Post Disclaimer Options', 'Draft Post Disclaimer', 'manage_options', 'dpd', [$this, 'options_page_html'] );
 	}
 
 	/**
@@ -215,4 +228,22 @@ class Options {
 		</div>
 		<?php
 	}
+
+
+	/**
+	 * @author Chrispian H. Burks <chrispian@gmail.com>
+	 * @since  2020-02-28
+	 *
+	 * @param $args array
+	 */
+	public function add_plugin_settings_link( $links ) {
+	    $settings_link = '<a href="options-general.php?page=dpd">' . __( 'Settings' ) . '</a>';
+	    array_push( $links, $settings_link );
+	  	return $links;
+	}
+
+
+
+
+
 }

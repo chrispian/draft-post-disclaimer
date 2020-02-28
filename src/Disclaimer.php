@@ -73,7 +73,7 @@ class Disclaimer {
 		$disclaimer = wp_kses_post(get_option('dpd_disclaimer'));
 
 		$html = "
-		<div class=\"alert alert-warning\" role=\"alert\"> 
+		<div class=\"alert alert-warning\" role=\"alert\">
 			$disclaimer
 		</div>
 		";
@@ -101,7 +101,7 @@ class Disclaimer {
 		$disclaimer = wp_kses_post(get_option('dpd_disclaimer'));
 
 		$html = "
-		<div class=\"alert alert-warning\" role=\"alert\"> 
+		<div class=\"alert alert-warning\" role=\"alert\">
 			$disclaimer
 		</div>
 		";
