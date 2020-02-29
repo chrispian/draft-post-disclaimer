@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.7] - 2020-02-28
+### Fixed
+- Eliminated static method calls src/Disclaimer.php #3
+- Minor style/linting clean up
+
 ## [1.0.6] - 2020-02-28
 ### Added
 - Added composer autoloader
