@@ -7,11 +7,14 @@
             "name": "Chrispian"
         }
     ],
-    "autoload": {
-        "psr-4": { "CHB\\DraftPostDisclaimer\\": "src/" }
-    },
-
     "require": {
         "webdevstudios/php-coding-standards": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "CHB\\DraftPostDisclaimer\\": "src/"
+        }
     }
+
 }
+

@@ -10,7 +10,6 @@ Namespace CHB\DraftPostDisclaimer\Admin;
 
 class Options {
 
-
 	/**
 	 * @author Chrispian H. Burks <chrispian@gmail.com>
 	 * @since  2020-02-28
@@ -229,21 +228,18 @@ class Options {
 		<?php
 	}
 
-
 	/**
-	 * @author Chrispian H. Burks <chrispian@gmail.com>
+	 * @author Chrispian H. Burks <chrispian.burks@webvdevstudios.com>
 	 * @since  2020-02-28
 	 *
-	 * @param $args array
+	 * @param $links
+	 *
+	 * @return mixed
 	 */
 	public function add_plugin_settings_link( $links ) {
 	    $settings_link = '<a href="options-general.php?page=dpd">' . __( 'Settings' ) . '</a>';
 	    array_push( $links, $settings_link );
 	  	return $links;
 	}
-
-
-
-
 
 }
