@@ -3,7 +3,7 @@
  * Plugin Name:       Draft Post Disclaimer
  * Plugin URI:        https://github.com/chrispian/draft-post-disclaimer
  * Description:       This plugin adds a disclaimer on posts in a "draft" category.
- * Version:           1.0.0
+ * Version:           1.0.7
  * Requires at least: 4.7
  * Requires PHP:      5.4
  * Author:            Chrispian H. Burks
@@ -37,7 +37,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Current plugin version.
  */
-define( 'DRAFT_POST_DISCLAIMER_VERSION', '1.0.6' );
+define( 'DRAFT_POST_DISCLAIMER_VERSION', '1.0.7' );
 
 /**
  * Fire things up.
