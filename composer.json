@@ -10,5 +10,8 @@
     "autoload": {
         "psr-4": { "CHB\\DraftPostDisclaimer\\": "src/" }
     },
-    "require": {}
+
+    "require": {
+        "webdevstudios/php-coding-standards": "^1.0"
+    }
 }

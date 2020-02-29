@@ -37,7 +37,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Current plugin version.
  */
-define( 'DRAFT_POST_DISCLAIMER_VERSION', '1.0.3' );
+define( 'DRAFT_POST_DISCLAIMER_VERSION', '1.0.6' );
 
 /**
  * Fire things up.
@@ -46,7 +46,7 @@ define( 'DRAFT_POST_DISCLAIMER_VERSION', '1.0.3' );
  */
 function run_draft_post_disclaimer() {
 
-	$options = new Admin\Options;
+	$options = new Admin\Options( 'plugin_action_links_' . plugin_basename( __FILE__ ) );
 	$options->run();
 
 	$plugin = new Disclaimer();
