@@ -6,7 +6,7 @@
  * @since  2020-02-15
  */
 
-Namespace CHB\DraftPostDisclaimer;
+Namespace CHB\DraftPostDisclaimer\Admin;
 
 class Options {
 

@@ -25,8 +25,9 @@ Namespace CHB\DraftPostDisclaimer;
 /**
  * Load up our dependencies.
  */
-require 'src/Disclaimer.php';
-require 'src/admin/Options.php';
+if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
+	require_once __DIR__ . '/vendor/autoload.php';
+}
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -36,7 +37,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Current plugin version.
  */
-define( 'DRAFT_POST_DISCLAIMER_VERSION', '1.0.5' );
+define( 'DRAFT_POST_DISCLAIMER_VERSION', '1.0.6' );
 
 /**
  * Fire things up.
@@ -45,7 +46,7 @@ define( 'DRAFT_POST_DISCLAIMER_VERSION', '1.0.5' );
  */
 function run_draft_post_disclaimer() {
 
-	$options = new Options( 'plugin_action_links_' . plugin_basename( __FILE__ ) );
+	$options = new Admin\Options( 'plugin_action_links_' . plugin_basename( __FILE__ ) );
 	$options->run();
 
 	$plugin = new Disclaimer();

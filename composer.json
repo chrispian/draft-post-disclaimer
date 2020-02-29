@@ -1,4 +1,16 @@
 {
+    "name": "chrispian/draft-post-disclaimer",
+    "description": "Plugin to display a disclaimer on posts in a draft category.",
+    "type": "wordpress-plugin",
+    "authors": [
+        {
+            "name": "Chrispian"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "CHB\\DraftPostDisclaimer\\": "src/" }
+    },
+
     "require": {
         "webdevstudios/php-coding-standards": "^1.0"
     }

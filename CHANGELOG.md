@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.6] - 2020-02-28
+### Added
+- Added composer autoloader
+- Added vendor to .gitignore
+- Updated namespace and instantion of Options class to allow autoloading
+
 ## [1.0.5] - 2020-02-28
 ### Added
 - Added settings link to plugin page. Thanks Sal!
